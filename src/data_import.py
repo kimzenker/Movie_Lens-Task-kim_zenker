@@ -9,7 +9,7 @@ def import_users() -> DataFrame:
 
 def import_movies() -> DataFrame:
     """returns df indexed by movieid"""
-    return pd.read_csv('data/movies.dat', sep='::', engine='python', encoding='latin-1', names = ['mid', 'title', 'genres'])
+    return pd.read_csv('data/movies.dat', sep='::', engine='python', encoding='latin-1', names = ['mid', 'title', 'genres'], index_col = 'mid')
 
 
 def import_ratings() -> DataFrame:
