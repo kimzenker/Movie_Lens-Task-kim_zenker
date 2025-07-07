@@ -1,2 +1,4 @@
-data/
+data/*
 todo
+venv/
+__pycache__/
