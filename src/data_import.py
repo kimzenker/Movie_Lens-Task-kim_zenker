@@ -17,4 +17,4 @@ def import_ratings() -> DataFrame:
     def cast_ratings_to_float(rating):
         ranting_for_float = str(rating).replace(',', '.')
         return float(ranting_for_float)
-    return pd.read_csv('data/ratings.dat', sep='::', engine='python', names = ['uid', 'mid', 'rating', 'timestamp'], converters={'rating':cast_ratings_to_float}, dtype={'uid':'int32', 'mid':'int32', 'rating':'float32', 'timestamp':'string'})
+    return pd.read_csv('data/ratings.dat', sep='::', engine='python', names = ['uid', 'mid', 'rating', 'timestamp'], converters={'rating':cast_ratings_to_float}, dtype={'uid':'int32', 'mid':'int32', 'timestamp':'string'})
