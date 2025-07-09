@@ -1,7 +1,6 @@
 import pytest
 
 from data_import import *
-from filtering import *
 
 # todo: maybe add tests for the casting i do in find_age_group_with_most_ratings in task.py
 
@@ -30,7 +29,6 @@ def test_import_ratings():
 
 
 if __name__ == "__main__":
-    print(filter_for_movies_with_over_x_ratings(import_movies(), import_ratings(), 10))
     test_import_users()
     test_import_movies()
     test_import_ratings()

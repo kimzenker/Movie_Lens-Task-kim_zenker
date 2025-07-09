@@ -10,7 +10,13 @@ from data_import import (
     import_ratings,
     age_group_translation,
 )
-from filtering import filter_for_movies_with_over_x_ratings
+
+
+def filter_for_movies_with_over_x_ratings(
+    movies: DataFrame, ratings: DataFrame, x: int
+) -> DataFrame:
+    movies_with_counts = movies.join(ratings.mid.value_counts())
+    return movies_with_counts[movies_with_counts["count"] >= x]
 
 
 def find_top_ten_movies(
