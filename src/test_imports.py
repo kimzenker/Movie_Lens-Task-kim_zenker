@@ -2,8 +2,6 @@ import pytest
 from data_import import import_movies, import_ratings, import_users
 from io import StringIO
 
-# todo: maybe add tests for the casting i do in find_age_group_with_most_ratings in task.py
-
 
 @pytest.fixture
 def users_data():
@@ -73,7 +71,6 @@ def test_import_ratings(ratings_data):
     assert ratings["mid"].iloc[0] == 1193, "First rating should be for movie ID 1193"
 
 
-@pytest.mark.full
 def test_data_consistency():
     ratings = import_ratings("data/ratings.dat")
     movies = import_movies("data/movies.dat")
