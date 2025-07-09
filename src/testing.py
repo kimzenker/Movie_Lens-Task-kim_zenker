@@ -1,6 +1,6 @@
 import pytest
 
-from data_import import *
+from data_import import import_movies, import_ratings, import_users
 
 # todo: maybe add tests for the casting i do in find_age_group_with_most_ratings in task.py
 

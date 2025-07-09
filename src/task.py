@@ -1,6 +1,5 @@
 # 1. Which are the Top 10 best rated movies (consider only movies which have at least 10 ratings)?
 # 2. Which age group give the most ratings overall?
-import pandas as pd
 from pandas import DataFrame
 from typing import Tuple, cast
 
@@ -46,7 +45,7 @@ def find_age_group_with_most_ratings(
     sorted_ages_with_counts = ages_with_rating_counts.sort_values(ascending=False)
     top_age_group = cast(
         int, sorted_ages_with_counts.index[0]
-    )  # casting is only for typechecker, this is always an int when the dataframes were created using import_ratings() and import_users()
+    )  # typechecker hint only, is int if import_ratings() import_users() were used
     top_number_ratings = sorted_ages_with_counts.iloc[0]
     return (top_age_group, top_number_ratings)
 
@@ -61,7 +60,8 @@ if __name__ == "__main__":
     print("The Top 10 best rated movies are:")
     for i, mid in enumerate(top_ten.index):
         print(
-            f"{i+1}. {top_ten.iloc[i]['title']} with an average rating of {round(top_ten.iloc[i]['rating'], 2)} stars "
+            f"{i+1}. {top_ten.iloc[i]['title']} "
+            f"with an average rating of {round(top_ten.iloc[i]['rating'], 2)} stars "
         )
     print("(averages are rounded to 2 decimal points)")
 
@@ -70,5 +70,6 @@ if __name__ == "__main__":
     )
     print()
     print(
-        f"The age group {age_group_translation[top_age_group]} gives the most ratings overall, giwith  a total of {number_of_ratings} ratings."
+        f"The age group {age_group_translation[top_age_group]} gives the most ratings overall, "
+        f"with  a total of {number_of_ratings} ratings."
     )
