@@ -36,7 +36,8 @@ def find_age_group_with_most_ratings(users: DataFrame, ratings: DataFrame) -> Tu
 if __name__ == "__main__":
     top_ten = find_top_ten_movies(movies=import_movies(
     ), ratings=import_ratings(), min_number_of_rating_per_movie=10)
-    print('The Top 10 best rated movies are')
+    print()
+    print('The Top 10 best rated movies are:')
     for i, mid in enumerate(top_ten.index):
         print(
             f"{i+1}. {top_ten.iloc[i]['title']} with an average rating of {round(top_ten.iloc[i]['rating'], 2)} stars ")
@@ -44,5 +45,6 @@ if __name__ == "__main__":
 
     top_age_group, number_of_ratings = find_age_group_with_most_ratings(
         import_users(), import_ratings())
+    print()
     print(
-        f"the top age group is ages {age_group_translation[top_age_group]} with {number_of_ratings} ratings total")
+        f"The age group {age_group_translation[top_age_group]} gives the most ratings overall, giwith  a total of {number_of_ratings} ratings.")
