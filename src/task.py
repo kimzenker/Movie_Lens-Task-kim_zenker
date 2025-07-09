@@ -2,7 +2,7 @@
 # 2. Which age group give the most ratings overall?
 import pandas as pd
 from pandas import DataFrame
-from typing import Tuple
+from typing import Tuple, cast
 
 from data_import import (
     import_users,
@@ -34,17 +34,15 @@ def find_top_ten_movies(
 def find_age_group_with_most_ratings(
     users: DataFrame, ratings: DataFrame
 ) -> Tuple[int, int]:
-    number_of_ratings_per_user = ratings.uid.value_counts()
-    users_with_number_of_ratings = users.join(number_of_ratings_per_user)
-    age_groups_with_number_of_rating_total = users_with_number_of_ratings.groupby(
-        "age"
-    )["count"].sum()
-    age_groups_sorted_by_number_of_rating = (
-        age_groups_with_number_of_rating_total.sort_values(ascending=False)
-    )
-    top_age_group = age_groups_sorted_by_number_of_rating.index[0]
-    number_of_ratings_in_top_age_group = age_groups_sorted_by_number_of_rating.iloc[0]
-    return (top_age_group, number_of_ratings_in_top_age_group)
+    user_rating_counts = ratings.uid.value_counts()
+    users_with_rating_counts = users.join(user_rating_counts)
+    ages_with_rating_counts = users_with_rating_counts.groupby("age")["count"].sum()
+    sorted_ages_with_counts = ages_with_rating_counts.sort_values(ascending=False)
+    top_age_group = cast(
+        int, sorted_ages_with_counts.index[0]
+    )  # casting is only for typechecker, this is always an int when the dataframes were created using import_ratings() and import_users()
+    top_number_ratings = sorted_ages_with_counts.iloc[0]
+    return (top_age_group, top_number_ratings)
 
 
 if __name__ == "__main__":

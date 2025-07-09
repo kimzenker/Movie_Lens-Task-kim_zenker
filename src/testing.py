@@ -3,6 +3,8 @@ import pytest
 from data_import import *
 from filtering import *
 
+# todo: maybe add tests for the casting i do in find_age_group_with_most_ratings in task.py
+
 
 # testing everything that went wrong for me while importing
 def test_import_users():
