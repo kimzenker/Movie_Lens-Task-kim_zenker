@@ -22,13 +22,13 @@ def test_import_movies():
 def test_import_ratings():
     ratings = import_ratings()
     movies = import_movies()
-    assert set(ratings['mid']).issubset(
-        set(movies.index)), "IDs appear that aren't part of the movie data provided"
+    assert set(ratings["mid"]).issubset(
+        set(movies.index)
+    ), "IDs appear that aren't part of the movie data provided"
 
 
 if __name__ == "__main__":
-    print(filter_for_movies_with_over_x_ratings(
-        import_movies(), import_ratings(), 10))
+    print(filter_for_movies_with_over_x_ratings(import_movies(), import_ratings(), 10))
     test_import_users()
     test_import_movies()
     test_import_ratings()
