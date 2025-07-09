@@ -2,10 +2,10 @@ import pandas as pd
 from pandas import DataFrame
 
 
-def import_users() -> DataFrame:
+def import_users(filepath) -> DataFrame:
     """returns df indexed by userid"""
     return pd.read_csv(
-        "data/users.dat",
+        filepath,
         sep="::",
         engine="python",
         names=["uid", "gender", "age", "occupation", "zip-code"],
@@ -20,10 +20,10 @@ def import_users() -> DataFrame:
     )
 
 
-def import_movies() -> DataFrame:
+def import_movies(filepath) -> DataFrame:
     """returns df indexed by movieid"""
     return pd.read_csv(
-        "data/movies.dat",
+        filepath,
         sep="::",
         engine="python",
         encoding="latin-1",
@@ -33,7 +33,7 @@ def import_movies() -> DataFrame:
     )
 
 
-def import_ratings() -> DataFrame:
+def import_ratings(filepath) -> DataFrame:
     """returns dataframe"""
 
     def cast_ratings_to_float(rating):
@@ -41,7 +41,7 @@ def import_ratings() -> DataFrame:
         return float(ranting_for_float)
 
     return pd.read_csv(
-        "data/ratings.dat",
+        filepath,
         sep="::",
         engine="python",
         names=["uid", "mid", "rating", "timestamp"],

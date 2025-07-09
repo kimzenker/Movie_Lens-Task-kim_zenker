@@ -52,8 +52,8 @@ def find_age_group_with_most_ratings(
 
 if __name__ == "__main__":
     top_ten = find_top_ten_movies(
-        movies=import_movies(),
-        ratings=import_ratings(),
+        movies=import_movies("data/movies.dat"),
+        ratings=import_ratings("data/ratings.dat"),
         min_number_of_rating_per_movie=10,
     )
     print()
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     print("(averages are rounded to 2 decimal points)")
 
     top_age_group, number_of_ratings = find_age_group_with_most_ratings(
-        import_users(), import_ratings()
+        import_users("data/users.dat"), import_ratings("data/ratings.dat")
     )
     print()
     print(
